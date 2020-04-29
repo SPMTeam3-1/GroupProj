@@ -1,0 +1,28 @@
+.header {
+  height: 100%;
+  margin: 2em;
+}
+
+.body {
+  width: 90%;
+  height: 100%;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  padding: 2%;
+}
+
+.billing_panel {
+  box-shadow: 3px 0 20px 0 rgba(0, 0, 0, 0.02),
+    -3px 0 20px 0 rgba(0, 0, 0, 0.02), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
+  padding: 2%;
+}
+
+.billing_card {
+  margin-top: 2%;
+}
+
+.billing_card .btn {
+  width: 15%;
+}

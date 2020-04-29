@@ -1,0 +1,53 @@
+.header {
+	height: 100%;
+	margin: 2em;
+}
+
+.body {
+	position: relative;
+	display: block;
+	margin: 1em;
+	padding-top: 5em;
+}
+
+.body .btn {
+	margin: 0.5em;
+	width: 40%;
+}
+
+.search-field {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	width: 90%;
+	float: left;
+}
+
+.modal-content {
+	margin-left: auto;
+	margin-right: auto;
+	// display: inline-block;
+}
+
+.modal-dialog {
+	width: 90%;
+	max-width: 100%;
+}
+
+.form-group {
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form-row {
+	width: 100% !important;
+}
+
+.winemaker_review {
+	width: 95% !important;
+}
+
+.food_pairing {
+	width: 80% !important;
+	float: left;
+}

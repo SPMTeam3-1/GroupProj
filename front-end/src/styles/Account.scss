@@ -1,0 +1,110 @@
+.account_profile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 350px;
+  width: 95%;
+  margin-top: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4em;
+  padding: 30px;
+}
+
+.profileImg {
+  /* display: inline-block; */
+  float: left;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 0;
+}
+
+.profileUser {
+  /* display: inline-block; */
+  position: relative;
+  width: 20%;
+  float: left;
+  /* margin: 0 auto 0 auto; */
+  vertical-align: top;
+  line-height: 1;
+}
+
+.profileUserName {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  float: left;
+}
+
+.profileChange {
+  /* display: inline-block; */
+  float: left;
+  vertical-align: bottom;
+  line-height: 2;
+}
+
+.title {
+  margin-top: 2em;
+  text-align: left;
+  margin-left: 2em;
+}
+
+.account_detail {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 60%;
+  width: 95%;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  padding: 1em;
+}
+.form-row {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.form-group {
+  // margin-left: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 40%;
+  text-align: left;
+}
+
+.form-label {
+  font-size: 2em;
+}
+
+.formName {
+  width: 90%;
+  margin: 0 auto 0 auto;
+}
+.account_detail_btn {
+  width: 70%;
+  margin: 1em 3em 3em 3em;
+}
+
+.account_contact {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 30%;
+  width: 95%;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.form-row .contact_item {
+  display: inline-block;
+  height: 15%;
+  width: 40%;
+  margin: 2%;
+}
+
+.account_contact_btn {
+  width: 70%;
+  margin: 1em 3em 3em 3em;
+}
