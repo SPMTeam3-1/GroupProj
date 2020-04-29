@@ -3,7 +3,7 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Redirect,
-	withRouter
+	withRouter,
 } from "react-router-dom";
 
 import SideBar from "./SideBar";
@@ -25,7 +25,7 @@ class Account extends Component {
 		Telephone: "XXXX",
 		Email: "XXX@XXX",
 		Fax: "XXX",
-		inEditMode: false
+		inEditMode: false,
 	};
 
 	handleProfileButton = () => {
@@ -33,14 +33,14 @@ class Account extends Component {
 		this.setState({ inEditMode: true });
 	};
 
-	handleDetailSubmit = event => {
+	handleDetailSubmit = (event) => {
 		event.preventDefault();
 		this.setState({ inEditMode: false });
 	};
 
-	handleNameChange = e => {
+	handleNameChange = (e) => {
 		this.setState({ Name: e.target.value });
-		console.log("change to: ", this.state.Name);
+		console.log("changed to: ", this.state.Name);
 	};
 
 	// handleSelectState = e => {
@@ -62,7 +62,7 @@ class Account extends Component {
 								height: "200px",
 								display: "inline-block",
 								marginLeft: "3em",
-								marginRight: "3em"
+								marginRight: "3em",
 							}}
 							src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
 							roundedCircle
