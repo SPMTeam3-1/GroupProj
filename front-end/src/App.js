@@ -45,10 +45,14 @@ class App extends Component {
 		],
 		Username: "",
 		Password: "",
-		Role: "",
+        Role: ""
+        // response: ""
 	};
 
 	componentDidMount() {
+        // fetch('http://localhost:3000')
+        //     .then(res => res.text())
+        //     .then(res => this.setState({ response: res }));
 		// Axios.get(
 		// 	"https://jsonplaceholder.typicode.com/Dashboard?_limit=10"
 		// ).then(res => this.setState({ Dashboard: res.data }));
