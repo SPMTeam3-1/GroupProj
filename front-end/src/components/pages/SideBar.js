@@ -285,10 +285,10 @@ export default withRouter(
 							id="products"
 							className="menu-item"
 							onClick={(e) =>
-								this.handleItemClick(e, "/products")
+								this.handleItemClick(e, "/cart")
 							}
 						>
-							<MdLocalBar type="bar" /> Products
+							<MdLocalBar type="bar" /> Shopping Cart
 						</p>
 						<p
 							id="food_pairing"
