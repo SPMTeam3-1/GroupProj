@@ -21,6 +21,7 @@ import test from "./components/pages/test";
 
 import "./styles/App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Cart from "./components/pages/Cart";
 
 // import Axios from "axios";
 
@@ -121,6 +122,7 @@ class App extends Component {
 							<Route path="/about" component={About} />
 							<Route path="/account" component={Account} />
 							<Route path="/orders" component={Orders} />
+							<Route path="/cart" component={Cart} />
 						</Switch>
 						{/* <Header /> */}
 					</div>

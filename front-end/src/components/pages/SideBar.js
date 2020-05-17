@@ -294,9 +294,7 @@ export default withRouter(
 						<p
 							id="shopping_cart"
 							className="menu-item"
-							onClick={(e) =>
-								this.handleItemClick(e, "/shopping_cart")
-							}
+							onClick={(e) => this.handleItemClick(e, "/cart")}
 						>
 							<MdShoppingCart type="bar" /> Shopping Cart
 						</p>
