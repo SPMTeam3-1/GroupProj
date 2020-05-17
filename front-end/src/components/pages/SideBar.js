@@ -25,8 +25,11 @@ import {
 	MdEqualizer,
 	MdDescription,
 	MdLibraryBooks,
+	MdList,
 	MdKeyboardArrowDown,
 	MdKeyboardArrowUp,
+	MdReceipt,
+	MdShoppingCart,
 } from "react-icons/md";
 
 export default withRouter(
@@ -179,15 +182,15 @@ export default withRouter(
 						>
 							<MdDashboard type="dashboard" /> Dashboard
 						</p>
-						<p
+						{/* <p
 							id="about"
 							className="menu-item"
 							onClick={this.handleConvClick}
 						>
 							<MdChat type="chat" /> Conversations{" "}
 							{this.handleArrow(this.state.convOpen)}
-						</p>
-						<div className={this.state.convOpen}>
+						</p> */}
+						{/* <div className={this.state.convOpen}>
 							<p
 								id="email"
 								className="menu-item"
@@ -204,8 +207,8 @@ export default withRouter(
 							>
 								Chat
 							</p>
-						</div>
-						<p
+						</div> */}
+						{/* <p
 							id="contacts"
 							className="menu-item"
 							href="/contacts"
@@ -213,8 +216,8 @@ export default withRouter(
 						>
 							<MdContacts type="contact" /> Contacts{" "}
 							{this.handleArrow(this.state.contOpen)}
-						</p>
-						<div className={this.state.contOpen}>
+						</p> */}
+						{/* <div className={this.state.contOpen}>
 							<p
 								id="customers"
 								className="menu-item"
@@ -280,25 +283,32 @@ export default withRouter(
 							>
 								Event Org
 							</p>
-						</div>
+						</div> */}
 						<p
-							id="products"
+							id="orders"
+							className="menu-item"
+							onClick={(e) => this.handleItemClick(e, "/orders")}
+						>
+							<MdReceipt type="bar" /> Orders
+						</p>
+						<p
+							id="shopping_cart"
 							className="menu-item"
 							onClick={(e) =>
 								this.handleItemClick(e, "/cart")
 							}
 						>
-							<MdLocalBar type="bar" /> Shopping Cart
+							<MdShoppingCart type="bar" /> Shopping Cart
 						</p>
-						<p
+						{/* <p
 							id="food_pairing"
 							className="menu-item"
 							href="/"
 							onClick={this.handleItemClick}
 						>
 							<MdLocalDining type="localDining" /> Food Pairing
-						</p>
-						<p
+						</p> */}
+						{/* <p
 							id="sales"
 							className="menu-item"
 							href="/"
@@ -306,8 +316,8 @@ export default withRouter(
 						>
 							<MdEqualizer type="equalizer" /> Sales{" "}
 							{this.handleArrow(this.state.salesOpen)}
-						</p>
-						<div className={this.state.salesOpen}>
+						</p> */}
+						{/* <div className={this.state.salesOpen}>
 							<p
 								id="orders"
 								className="menu-item"
@@ -393,7 +403,7 @@ export default withRouter(
 							onClick={(e) => this.handleItemClick(e, "/reports")}
 						>
 							<MdLibraryBooks type="libraryBooks" /> Reports
-						</p>
+						</p> */}
 						<a id="about" className="menu-item" href="/about">
 							About
 						</a>

@@ -160,22 +160,6 @@ class Account extends Component {
 									/>
 								</Form.Group>
 							</Form.Row>
-							{this.state.inEditMode ? (
-								<Button
-									variant="primary"
-									// type="submit"
-									className="account_detail_btn"
-									onClick={this.handleDetailSubmit}
-									size="lg"
-								>
-									Submit
-								</Button>
-							) : null}
-						</Form>
-					</div>
-					<h1 className="title">Contact</h1>
-					<div className="account_contact">
-						<Form>
 							<Form.Row>
 								<Form.Group
 									as={Form.col}
@@ -236,8 +220,8 @@ class Account extends Component {
 								<Button
 									variant="primary"
 									// type="submit"
-									className="account_contact_btn"
-									onClick={this.handleContactSubmit}
+									className="account_detail_btn"
+									onClick={this.handleDetailSubmit}
 									size="lg"
 								>
 									Submit
@@ -245,6 +229,10 @@ class Account extends Component {
 							) : null}
 						</Form>
 					</div>
+					{/* <h1 className="title">Contact</h1>
+					<div className="account_contact">
+						<Form></Form>
+					</div> */}
 				</div>
 			</div>
 		);
