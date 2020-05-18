@@ -45,37 +45,31 @@ class Orders extends Component {
 						<Table striped bordered hover responsive variant="dark">
 							<thead>
 								<tr>
-									<th>From</th>
-									<th>Bill To</th>
-									<th>Status</th>
-									<th>Total Cost</th>
+									<th>Box Type</th>
+									<th>Box Size</th>
+									<th>Price</th>
+									<th>Delivery Time</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>Customer X</td>
-									<td>Supplier X</td>
-									<td>Received</td>
+									<td>Fruit Box</td>
+									<td>Small</td>
 									<td>AU$ 30</td>
+									<td>Date:Time</td>
 									<td>
-										<Button variant="info">
-											<p>View</p>
-										</Button>
 										<Button variant="info">
 											<p>Delete</p>
 										</Button>
 									</td>
 								</tr>
 								<tr>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td>1.1.1</td>
-									<td>1.1.1</td>
+									<td>Mixed Box</td>
+									<td>Medium</td>
+									<td>AU$ 60</td>
+									<td>Date:Time</td>
 									<td>
-										<Button variant="info">
-											<p>View</p>
-										</Button>
 										<Button variant="info">
 											<p>Delete</p>
 										</Button>

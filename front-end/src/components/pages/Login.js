@@ -140,12 +140,11 @@ class Login extends Component {
 									as="select"
 									value={this.state.role}
 									placeholder="User Role"
-									size="sm"
+									size="lg"
 									onChange={this.handleUserRoleChange}
 								>
-									<option>...</option>
 									<option>Admin</option>
-									<option>Supplier</option>
+									<option>Customer</option>
 								</Form.Control>
 							</Col>
 						</Form.Group>{" "}
