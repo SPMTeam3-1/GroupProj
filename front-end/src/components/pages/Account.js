@@ -17,16 +17,31 @@ class Account extends Component {
 	state = {
 		Name: "Username",
 		Authority: "Admin",
-		Address: "1234 Swanston St",
+		Address1: "1234 Swanston St",
+		Address2: "Unit 4",
 		City: "Melbourne",
 		State: "Victoria",
 		Postcode: "3000",
 		Mobile: "XXXX",
-		Telephone: "XXXX",
+		Home: "XXXX",
 		Email: "XXX@XXX",
-		Fax: "XXX",
+		Working: "XXX",
 		inEditMode: false,
 	};
+
+	async componentDidMount() {
+		// fetch user data here
+		// try {
+		// 	/* fetch wine list with parameter wineID and save it to state as wine_list*/
+		// 	var url = `https://dy4v35a040.execute-api.ap-southeast-2.amazonaws.com/latest/winelist/${1}`;
+		// 	var response = await fetch(url);
+		// 	var data = await response.json();
+		// 	console.log("product list", data);
+		// 	// await this.setState({ event_data: data.date });
+		// } catch (err) {
+		// 	console.log(err);
+		// }
+	}
 
 	handleProfileButton = () => {
 		// event.preventDefault();
@@ -35,12 +50,22 @@ class Account extends Component {
 
 	handleDetailSubmit = (event) => {
 		event.preventDefault();
+		console.log("state: ", this.state);
 		this.setState({ inEditMode: false });
+		// using POST API to transfer the data to DB
 	};
 
 	handleNameChange = (e) => {
 		this.setState({ Name: e.target.value });
 		console.log("changed to: ", this.state.Name);
+	};
+
+	handleUserInfoChange = (event) => {
+		event.preventDefault();
+		const target = event.target;
+		const name = target.name;
+		const value = target.value;
+		this.setState({ [name]: value });
 	};
 
 	// handleSelectState = e => {
@@ -51,7 +76,11 @@ class Account extends Component {
 	render() {
 		return (
 			<div>
-				<SideBar SideBar={this.SideBar} />
+				<SideBar
+					SideBar={this.SideBar}
+					Username={this.props.Username}
+					Role={this.props.Role}
+				/>
 				<div className="content">
 					<div className="account_profile">
 						<Image
@@ -68,7 +97,11 @@ class Account extends Component {
 							roundedCircle
 						/>
 						<div className="profileUser">
-							<h1 className="profileUserName">User Name</h1>
+							<h1 className="profileUserName">
+								{this.props.Username
+									? this.props.Username
+									: this.props.location.Props.Username}
+							</h1>
 							<Button
 								variant="outline-info"
 								className="profileChange"
@@ -92,11 +125,12 @@ class Account extends Component {
 									</Form.Label>
 									<Form.Control
 										type="Name"
+										name="Name"
 										as={Form.col}
 										placeholder={this.state.Name}
 										readOnly={!this.state.inEditMode}
 										size="lg"
-										onChange={this.handleNameChange}
+										onChange={this.handleUserInfoChange}
 									/>
 								</Form.Group>
 							</Form.Row>
@@ -105,11 +139,26 @@ class Account extends Component {
 									as={Form.col}
 									controlId="formGridAddress1"
 								>
-									<Form.Label size="lg">Address</Form.Label>
+									<Form.Label size="lg">Address 1</Form.Label>
 									<Form.Control
-										placeholder={this.state.Address}
+										name="Address1"
+										placeholder={this.state.Address1}
 										readOnly={!this.state.inEditMode}
 										size="lg"
+										onChange={this.handleUserInfoChange}
+									/>
+								</Form.Group>
+								<Form.Group
+									as={Form.col}
+									controlId="formGridAddress1"
+								>
+									<Form.Label size="lg">Address 2</Form.Label>
+									<Form.Control
+										name="Address2"
+										placeholder={this.state.Address2}
+										readOnly={!this.state.inEditMode}
+										size="lg"
+										onChange={this.handleUserInfoChange}
 									/>
 								</Form.Group>
 
@@ -119,9 +168,11 @@ class Account extends Component {
 								>
 									<Form.Label size="lg">City</Form.Label>
 									<Form.Control
+										name="City"
 										placeholder={this.state.City}
 										readOnly={!this.state.inEditMode}
 										size="lg"
+										onChange={this.handleUserInfoChange}
 									/>
 								</Form.Group>
 							</Form.Row>
@@ -137,6 +188,8 @@ class Account extends Component {
 										placeholder={this.state.State}
 										readOnly={!this.state.inEditMode}
 										size="lg"
+										name="State"
+										onChange={this.handleUserInfoChange}
 										// onSelect={this.handleSelectState}
 									>
 										<option>Victoria</option>
@@ -157,6 +210,8 @@ class Account extends Component {
 										placeholder={this.state.Postcode}
 										readOnly={!this.state.inEditMode}
 										size="lg"
+										name="Postcode"
+										onChange={this.handleUserInfoChange}
 									/>
 								</Form.Group>
 							</Form.Row>
@@ -170,22 +225,26 @@ class Account extends Component {
 										Mobile Phone
 									</Form.Label>
 									<Form.Control
+										name="Mobile"
 										placeholder={this.state.Mobile}
 										readOnly={!this.state.inEditMode}
 										size="lg"
+										onChange={this.handleUserInfoChange}
 									/>
 								</Form.Group>
 
 								<Form.Group
 									as={Form.col}
-									controlId="formGridTelephone"
+									controlId="formGridHome"
 									className="contact_item"
 								>
-									<Form.Label size="lg">Telephone</Form.Label>
+									<Form.Label size="lg">Home</Form.Label>
 									<Form.Control
-										placeholder={this.state.Telephone}
+										name="Home"
+										placeholder={this.state.Home}
 										readOnly={!this.state.inEditMode}
 										size="lg"
+										onChange={this.handleUserInfoChange}
 									/>
 								</Form.Group>
 							</Form.Row>
@@ -197,22 +256,31 @@ class Account extends Component {
 								>
 									<Form.Label size="lg">Email</Form.Label>
 									<Form.Control
-										placeholder={this.state.Email}
+										name="Email"
+										placeholder={
+											this.props.Username
+												? this.props.Username
+												: this.props.location.Props
+														.Username
+										}
 										readOnly={!this.state.inEditMode}
 										size="lg"
+										onChange={this.handleUserInfoChange}
 									/>
 								</Form.Group>
 
 								<Form.Group
 									as={Form.col}
-									controlId="formGridFax"
+									controlId="formGridWorking"
 									className="contact_item"
 								>
-									<Form.Label size="lg">Fax</Form.Label>
+									<Form.Label size="lg">Working</Form.Label>
 									<Form.Control
-										placeholder={this.state.Fax}
+										name="Working"
+										placeholder={this.state.Working}
 										readOnly={!this.state.inEditMode}
 										size="lg"
+										onChange={this.handleUserInfoChange}
 									/>
 								</Form.Group>
 							</Form.Row>

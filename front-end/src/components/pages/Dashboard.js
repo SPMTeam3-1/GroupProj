@@ -27,7 +27,7 @@ class Dashboard extends Component {
 	  }
 
 	render() {
-		console.log(this.props);
+		console.log("from dashboard: ", this.props);
 		// return this.props.Dashboard.map(todo => (
 		// <TodoItem
 		// 	key={todo.id}
@@ -38,7 +38,11 @@ class Dashboard extends Component {
 		// ));
 		return (
 			<div className="Dashboard">
-				<SideBar SideBar={this.SideBar} />
+				<SideBar
+					SideBar={this.SideBar}
+					Username={this.props.Username}
+					Role={this.props.Role}
+				/>
 				<div className="content">
 					<Card className="card-sm-1">
 						<Card.Img
