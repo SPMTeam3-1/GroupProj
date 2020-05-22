@@ -14,12 +14,12 @@ ordersRouter.get('/:id', function(req, res) {
     /* getting single order by id */
 })
 
-ordersRouter.update('/:id', function(req, res) {
+// ordersRouter.update('/:id', function(req, res) {
     /* delete an order */
     /* or */
     /* complete an order */
-    /* Our assumption here is we can see all the past orders, cancelled orders and active orders listing.
-})
+    /* Our assumption here is we can see all the past orders, cancelled orders and active orders listing. */
+// })
 
 /**
  * order statuses:
