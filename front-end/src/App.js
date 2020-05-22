@@ -44,21 +44,18 @@ class App extends Component {
 			// }
 		],
 		Username: "",
+		Password: "",
 		Role: "",
+		response: "",
 	};
 
 	async componentDidMount() {
-		// try {
-		// 	/* fetch wine list with parameter wineID and save it to state as wine_list*/
-		// 	var url = ``;
-		// 	var response = await fetch(url);
-		// 	var data = await response.json();
-		// 	console.log("product list", data);
-		// 	// await this.setState({ event_data: data.date });
-		// } catch (err) {
-		// 	console.log(err);
-		// }
-		// fetch order information here
+		fetch("http://localhost:3000")
+			.then((res) => res.text())
+			.then((res) => this.setState({ response: res }));
+		// Axios.get(
+		// 	"https://jsonplaceholder.typicode.com/Dashboard?_limit=10"
+		// ).then(res => this.setState({ Dashboard: res.data }));
 	}
 
 	updateUsername = (username) => {
