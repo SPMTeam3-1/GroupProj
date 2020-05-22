@@ -1,9 +1,13 @@
 var express = require('express');
-var router = express.Router();
+var indexRouter = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send('A basic test for express set up');
+indexRouter.get('/', function(req, res, next) {
+    console.log('111')
+  res.send('A test for data retrieval from backend');
 });
 
-module.exports = router;
+// indexRouter.post('login', function(req, res, next) {
+//     res.send(req)
+// })
+module.exports = indexRouter;
