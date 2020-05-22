@@ -21,7 +21,7 @@ class Login extends Component {
 		this.state = {
 			username: "",
 			password: "",
-			role: "",
+			role: "Admin",
 			modalShow: false,
 		};
 	}
@@ -40,32 +40,31 @@ class Login extends Component {
 
 	handleLoginClick = (event) => {
 		event.preventDefault();
-		fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: this.state.username,
-                password: this.state.password
-            })
-
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status = '200') {
-                this.props.history.push("/dashboard");
-            }
-            // this.state.username === "asdf" && this.state.password === "zxcv") {
-			// this.props.updateUsername(this.state.username);
-			// this.props.updatePassword(this.state.password);
-			// this.props.updateRole(this.state.role);
-			// ;
-		    else {
-                console.log('Username is asdf, password is zxcv')
-			    this.setState({ modalShow: true });
-            }
-        })
+		fetch("http://localhost:3000/login", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: this.state.username,
+				password: this.state.password,
+			}),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if ((data.status = "200")) {
+					this.props.history.push("/dashboard");
+				}
+				// this.state.username === "asdf" && this.state.password === "zxcv") {
+				// this.props.updateUsername(this.state.username);
+				// this.props.updatePassword(this.state.password);
+				// this.props.updateRole(this.state.role);
+				// ;
+				else {
+					console.log("Username is asdf, password is zxcv");
+					this.setState({ modalShow: true });
+				}
+			});
 	};
 
 	handleClose = (event) => {
@@ -158,12 +157,11 @@ class Login extends Component {
 									as="select"
 									value={this.state.role}
 									placeholder="User Role"
-									size="sm"
+									size="lg"
 									onChange={this.handleUserRoleChange}
 								>
-									<option>...</option>
 									<option>Admin</option>
-									<option>Supplier</option>
+									<option>Customer</option>
 								</Form.Control>
 							</Col>
 						</Form.Group>{" "}

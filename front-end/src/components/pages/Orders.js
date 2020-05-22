@@ -24,9 +24,14 @@ class Orders extends Component {
 	};
 
 	render() {
+		// console.log("from orders: ", this.props);
 		return (
 			<div>
-				<SideBar SideBar={this.SideBar} />
+				<SideBar
+					SideBar={this.SideBar}
+					Username={this.props.Username}
+					Role={this.props.Role}
+				/>
 				<div className="content">
 					<div className="header">
 						<h1 style={{ textAlign: "left" }}>Orders</h1>

@@ -42,6 +42,12 @@ export default withRouter(
 				supOpen: "closed",
 				salesOpen: "closed",
 				reviewOpen: "closed",
+				Username: this.props.Username
+					? this.props.Username
+					: this.props.location.Props.Username,
+				Role: this.props.Role
+					? this.props.Role
+					: this.props.location.Props.Role,
 			};
 		}
 
@@ -49,16 +55,16 @@ export default withRouter(
 		// 	this.setState({ visible: !this.state.visible });
 		// }
 
-		handleAvatarClick = (event) => {
-			// event.preventDefault();
-			event.preventDefault();
-			console.log("avatar is clicked, redirecting to account page");
-			this.props.history.push("/account");
-		};
+		// handleAvatarClick = (event) => {
+		// 	// event.preventDefault();
+		// 	event.preventDefault();
+		// 	// console.log("avatar is clicked, redirecting to account page");
+		// 	this.props.history.push("/account");
+		// };
 
 		handleItemClick = (event, pageLink) => {
 			event.preventDefault();
-			console.log("item is clicked");
+			// console.log("item is clicked");
 			if (pageLink !== this.props.location.pathname) {
 				this.handleRedirect(pageLink);
 			}
@@ -66,53 +72,56 @@ export default withRouter(
 
 		handleRedirect = (pageLink) => {
 			console.log("redirecting to corresponding page");
-			this.props.history.push(pageLink);
+			this.props.history.push({
+				pathname: pageLink,
+				Props: { ...this.state },
+			});
 		};
 
-		handleConvClick = () => {
-			if (this.state.convOpen === "closed") {
-				this.setState({ convOpen: "opened" });
-			} else {
-				this.setState({ convOpen: "closed" });
-			}
-			console.log("Conversation item is clicked");
-		};
+		// handleConvClick = () => {
+		// 	if (this.state.convOpen === "closed") {
+		// 		this.setState({ convOpen: "opened" });
+		// 	} else {
+		// 		this.setState({ convOpen: "closed" });
+		// 	}
+		// 	console.log("Conversation item is clicked");
+		// };
 
-		handleContClick = () => {
-			if (this.state.contOpen === "closed") {
-				this.setState({ contOpen: "opened" });
-			} else {
-				this.setState({ contOpen: "closed" });
-			}
-			console.log("Contacts item is clicked");
-		};
+		// handleContClick = () => {
+		// 	if (this.state.contOpen === "closed") {
+		// 		this.setState({ contOpen: "opened" });
+		// 	} else {
+		// 		this.setState({ contOpen: "closed" });
+		// 	}
+		// 	console.log("Contacts item is clicked");
+		// };
 
-		handleSupClick = () => {
-			if (this.state.supOpen === "closed") {
-				this.setState({ supOpen: "opened" });
-			} else {
-				this.setState({ supOpen: "closed" });
-			}
-			console.log("Suppliers item is clicked");
-		};
+		// handleSupClick = () => {
+		// 	if (this.state.supOpen === "closed") {
+		// 		this.setState({ supOpen: "opened" });
+		// 	} else {
+		// 		this.setState({ supOpen: "closed" });
+		// 	}
+		// 	console.log("Suppliers item is clicked");
+		// };
 
-		handleSalesClick = () => {
-			if (this.state.salesOpen === "closed") {
-				this.setState({ salesOpen: "opened" });
-			} else {
-				this.setState({ salesOpen: "closed" });
-			}
-			console.log("Sales item is clicked");
-		};
+		// handleSalesClick = () => {
+		// 	if (this.state.salesOpen === "closed") {
+		// 		this.setState({ salesOpen: "opened" });
+		// 	} else {
+		// 		this.setState({ salesOpen: "closed" });
+		// 	}
+		// 	console.log("Sales item is clicked");
+		// };
 
-		handleReviewClick = () => {
-			if (this.state.reviewOpen === "closed") {
-				this.setState({ reviewOpen: "opened" });
-			} else {
-				this.setState({ reviewOpen: "closed" });
-			}
-			console.log("Reviews item is clicked");
-		};
+		// handleReviewClick = () => {
+		// 	if (this.state.reviewOpen === "closed") {
+		// 		this.setState({ reviewOpen: "opened" });
+		// 	} else {
+		// 		this.setState({ reviewOpen: "closed" });
+		// 	}
+		// 	console.log("Reviews item is clicked");
+		// };
 
 		handleArrow = (state) => {
 			if (state === "closed") {
@@ -123,6 +132,7 @@ export default withRouter(
 		};
 
 		render() {
+			console.log("from sidebar state", this.state);
 			return (
 				<div className="NavBar">
 					{/* <h1>Below is for Menu bar</h1> */}
@@ -136,7 +146,7 @@ export default withRouter(
 					>
 						<Card
 							className="menu-avatar"
-							onClick={this.handleAvatarClick}
+							onClick={(e) => this.handleItemClick(e, "/account")}
 						>
 							<Image
 								variant="top"
@@ -170,7 +180,11 @@ export default withRouter(
 									textAlign: "center",
 								}}
 							>
-								<Card.Title>Name</Card.Title>
+								<Card.Title>
+									{this.props.Username
+										? this.props.Username
+										: this.props.location.Props.Username}
+								</Card.Title>
 							</Card.Body>
 						</Card>
 						<p
@@ -291,13 +305,19 @@ export default withRouter(
 						>
 							<MdReceipt type="bar" /> Orders
 						</p>
-						<p
-							id="shopping_cart"
-							className="menu-item"
-							onClick={(e) => this.handleItemClick(e, "/cart")}
-						>
-							<MdShoppingCart type="bar" /> Shopping Cart
-						</p>
+						{this.state.Role === "Admin" ? (
+							<p />
+						) : (
+							<p
+								id="shopping_cart"
+								className="menu-item"
+								onClick={(e) =>
+									this.handleItemClick(e, "/cart")
+								}
+							>
+								<MdShoppingCart type="bar" /> Shopping Cart
+							</p>
+						)}
 						{/* <p
 							id="food_pairing"
 							className="menu-item"
@@ -402,9 +422,6 @@ export default withRouter(
 						>
 							<MdLibraryBooks type="libraryBooks" /> Reports
 						</p> */}
-						<a id="about" className="menu-item" href="/about">
-							About
-						</a>
 						<a href="/">Log Out</a>
 					</Menu>
 				</div>
