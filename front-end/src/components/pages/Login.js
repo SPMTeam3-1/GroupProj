@@ -54,11 +54,12 @@ class Login extends Component {
 			.then((data) => {
 				if ((data.status = "200")) {
 					this.props.history.push("/dashboard");
+					this.props.updateUsername(this.state.username);
+					this.props.updatePassword(this.state.password);
+					this.props.updateRole(this.state.role);
 				}
 				// this.state.username === "asdf" && this.state.password === "zxcv") {
-				// this.props.updateUsername(this.state.username);
-				// this.props.updatePassword(this.state.password);
-				// this.props.updateRole(this.state.role);
+
 				// ;
 				else {
 					console.log("Username is asdf, password is zxcv");
