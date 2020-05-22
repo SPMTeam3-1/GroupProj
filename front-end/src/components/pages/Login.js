@@ -53,10 +53,10 @@ class Login extends Component {
 			.then((response) => response.json())
 			.then((data) => {
 				if ((data.status = "200")) {
-					this.props.history.push("/dashboard");
 					this.props.updateUsername(this.state.username);
-					this.props.updatePassword(this.state.password);
+					// this.props.updatePassword(this.state.password);
 					this.props.updateRole(this.state.role);
+					this.props.history.push("/dashboard");
 				}
 				// this.state.username === "asdf" && this.state.password === "zxcv") {
 
