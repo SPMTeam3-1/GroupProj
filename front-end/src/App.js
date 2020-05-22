@@ -13,7 +13,6 @@ import Dashboard from "./components/pages/Dashboard";
 import SideBar from "./components/pages/SideBar";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
-import About from "./components/pages/About";
 import Account from "./components/pages/Account";
 import Orders from "./components/pages/Orders";
 import uuid from "uuid";
@@ -129,7 +128,6 @@ class App extends Component {
 								)}
 							/>
 							<Route path="/signup" component={Signup} />
-							<Route path="/about" component={About} />
 							<Route
 								path="/account"
 								component={Account}

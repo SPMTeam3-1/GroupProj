@@ -422,9 +422,6 @@ export default withRouter(
 						>
 							<MdLibraryBooks type="libraryBooks" /> Reports
 						</p> */}
-						<a id="about" className="menu-item" href="/about">
-							About
-						</a>
 						<a href="/">Log Out</a>
 					</Menu>
 				</div>
