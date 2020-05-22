@@ -21,7 +21,7 @@ class Login extends Component {
 		this.state = {
 			username: "",
 			password: "",
-			role: "",
+			role: "Admin",
 			modalShow: false,
 		};
 	}
@@ -42,9 +42,12 @@ class Login extends Component {
 		event.preventDefault();
 		if (this.state.username === "asdf" && this.state.password === "zxcv") {
 			this.props.updateUsername(this.state.username);
-			this.props.updatePassword(this.state.password);
+			// this.props.updatePassword(this.state.password);
 			this.props.updateRole(this.state.role);
-			this.props.history.push("/dashboard");
+			console.log("from login page:", this.state);
+			this.props.history.push({
+				pathname: "/dashboard",
+			});
 		} else {
 			this.setState({ modalShow: true });
 		}

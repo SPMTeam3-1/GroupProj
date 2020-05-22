@@ -27,7 +27,7 @@ import Cart from "./components/pages/Cart";
 
 class App extends Component {
 	state = {
-		Dashboard: [
+		Orders: [
 			// {
 			// 	id: uuid.v4(),
 			// 	title: "Take out the trash",
@@ -45,26 +45,37 @@ class App extends Component {
 			// }
 		],
 		Username: "",
-		Password: "",
 		Role: "",
 	};
 
-	componentDidMount() {
-		// Axios.get(
-		// 	"https://jsonplaceholder.typicode.com/Dashboard?_limit=10"
-		// ).then(res => this.setState({ Dashboard: res.data }));
+	async componentDidMount() {
+		// try {
+		// 	/* fetch wine list with parameter wineID and save it to state as wine_list*/
+		// 	var url = ``;
+		// 	var response = await fetch(url);
+		// 	var data = await response.json();
+		// 	console.log("product list", data);
+		// 	// await this.setState({ event_data: data.date });
+		// } catch (err) {
+		// 	console.log(err);
+		// }
+		// fetch order information here
 	}
 
 	updateUsername = (username) => {
 		this.setState({ Username: username });
 	};
 
-	updatePassword = (password) => {
-		this.setState({ Password: password });
-	};
+	// updatePassword = (password) => {
+	// 	this.setState({ Password: password });
+	// };
 
 	updateRole = (role) => {
 		this.setState({ Role: role });
+	};
+
+	getUsername = () => {
+		return this.state.Username;
 	};
 
 	// Delete Todo
@@ -110,9 +121,8 @@ class App extends Component {
 									<React.Fragment>
 										{/* <SideBar SideBar={this.SideBar} /> */}
 										<Dashboard
-											Dashboard={this.state.Dashboard}
+											Orders={this.state.Orders}
 											Username={this.state.Username}
-											Password={this.state.Password}
 											Role={this.state.Role}
 										/>
 									</React.Fragment>
@@ -120,9 +130,26 @@ class App extends Component {
 							/>
 							<Route path="/signup" component={Signup} />
 							<Route path="/about" component={About} />
-							<Route path="/account" component={Account} />
-							<Route path="/orders" component={Orders} />
-							<Route path="/cart" component={Cart} />
+							<Route
+								path="/account"
+								component={Account}
+								Username={this.state.Username}
+								Role={this.state.Role}
+							/>
+							<Route
+								path="/orders"
+								component={Orders}
+								Orders={this.state.Orders}
+								Username={this.state.Username}
+								Role={this.state.Role}
+							/>
+							<Route
+								path="/cart"
+								component={Cart}
+								Orders={this.state.Orders}
+								Username={this.state.Username}
+								Role={this.state.Role}
+							/>
 						</Switch>
 						{/* <Header /> */}
 					</div>
