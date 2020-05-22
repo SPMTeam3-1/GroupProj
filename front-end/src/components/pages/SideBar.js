@@ -305,19 +305,7 @@ export default withRouter(
 						>
 							<MdReceipt type="bar" /> Orders
 						</p>
-						{this.state.Role === "Admin" ? (
-							<p />
-						) : (
-							<p
-								id="shopping_cart"
-								className="menu-item"
-								onClick={(e) =>
-									this.handleItemClick(e, "/cart")
-								}
-							>
-								<MdShoppingCart type="bar" /> Shopping Cart
-							</p>
-						)}
+
 						{/* <p
 							id="food_pairing"
 							className="menu-item"
