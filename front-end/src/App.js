@@ -26,23 +26,8 @@ import Cart from "./components/pages/Cart";
 
 class App extends Component {
 	state = {
-		Orders: [
-			// {
-			// 	id: uuid.v4(),
-			// 	title: "Take out the trash",
-			// 	completed: false
-			// },
-			// {
-			// 	id: uuid.v4(),
-			// 	title: "Todo 2",
-			// 	completed: false
-			// },
-			// {
-			// 	id: uuid.v4(),
-			// 	title: "Todo 3",
-			// 	completed: false
-			// }
-		],
+		Orders: [],
+		Carts: [],
 		Username: "",
 		Role: "",
 	};
@@ -71,6 +56,10 @@ class App extends Component {
 
 	updateRole = (role) => {
 		this.setState({ Role: role });
+	};
+
+	updateCarts = (carts) => {
+		this.setState({ Carts: carts });
 	};
 
 	getUsername = () => {
@@ -123,6 +112,8 @@ class App extends Component {
 											Orders={this.state.Orders}
 											Username={this.state.Username}
 											Role={this.state.Role}
+											Carts={this.state.Carts}
+											updateCarts={this.updateCarts}
 										/>
 									</React.Fragment>
 								)}
@@ -130,23 +121,63 @@ class App extends Component {
 							<Route path="/signup" component={Signup} />
 							<Route
 								path="/account"
-								component={Account}
-								Username={this.state.Username}
-								Role={this.state.Role}
+								render={(props) => (
+									<React.Fragment>
+										{/* <SideBar SideBar={this.SideBar} /> */}
+										<Account
+											// Orders={this.state.Orders}
+											Username={this.state.Username}
+											Role={this.state.Role}
+											Carts={this.state.Carts}
+											updateCarts={this.updateCarts}
+										/>
+									</React.Fragment>
+								)}
+								// component={Account}
+								// Username={this.state.Username}
+								// Role={this.state.Role}
+								// Carts={this.state.Carts}
 							/>
 							<Route
 								path="/orders"
-								component={Orders}
-								Orders={this.state.Orders}
-								Username={this.state.Username}
-								Role={this.state.Role}
+								render={(props) => (
+									<React.Fragment>
+										{/* <SideBar SideBar={this.SideBar} /> */}
+										<Orders
+											Orders={this.state.Orders}
+											Username={this.state.Username}
+											Role={this.state.Role}
+											Carts={this.state.Carts}
+											updateCarts={this.updateCarts}
+										/>
+									</React.Fragment>
+								)}
+								// component={Orders}
+								// Orders={this.state.Orders}
+								// Username={this.state.Username}
+								// Role={this.state.Role}
+								// Carts={this.state.Carts}
 							/>
 							<Route
 								path="/cart"
-								component={Cart}
-								Orders={this.state.Orders}
-								Username={this.state.Username}
-								Role={this.state.Role}
+								render={(props) => (
+									<React.Fragment>
+										{/* <SideBar SideBar={this.SideBar} /> */}
+										<Cart
+											Orders={this.state.Orders}
+											Username={this.state.Username}
+											Role={this.state.Role}
+											Carts={this.state.Carts}
+											updateCarts={this.updateCarts}
+										/>
+									</React.Fragment>
+								)}
+								// component={Cart}
+								// Orders={this.state.Orders}
+								// Username={this.state.Username}
+								// Role={this.state.Role}
+								// Carts={this.state.Carts}
+								// updateCarts={this.updateCarts}
 							/>
 						</Switch>
 						{/* <Header /> */}
