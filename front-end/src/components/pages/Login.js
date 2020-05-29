@@ -58,6 +58,7 @@ class Login extends Component {
 					// this.props.updatePassword(this.state.password);
                     this.props.updateRole(this.state.role);
                     this.props.history.push("/dashboard");
+
 				}
 				// this.state.username === "asdf" && this.state.password === "zxcv") {
 

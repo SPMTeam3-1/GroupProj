@@ -1,10 +1,11 @@
-var express = require('express');
+var express = require("express");
 var ordersRouter = express.Router();
 var connection = require('./utils')
 
 var nodemailer = require('../mailing_services/nodemailer')
 
 /* GET home page. */
+
 ordersRouter.get('/all', function(req, res, next) {
     connection.connect(err => {
         connection.query(`SELECT * FROM order;`, (err, rows) => {
@@ -67,6 +68,7 @@ ordersRouter.get('/:id', function(req, res) {
                 orders: rows})
         })
     })
+
 })
 
 
