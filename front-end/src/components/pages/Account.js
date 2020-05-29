@@ -15,21 +15,61 @@ import "../../styles/Account.scss";
 
 class Account extends Component {
 	state = {
-		Name: "Username",
-		Authority: "Admin",
-		Address1: "1234 Swanston St",
-		Address2: "Unit 4",
-		City: "Melbourne",
-		State: "Victoria",
-		Postcode: "3000",
-		Mobile: "XXXX",
-		Home: "XXXX",
-		Email: "XXX@XXX",
-		Working: "XXX",
+		username: this.props.Username,
+        Role: this.props.Role,
+        Name: "",
+		Address1: "",
+		Address2: "",
+		City: "",
+		State: "",
+		Postcode: "",
+		Mobile: "",
+		Home: "",
+		Email: "",
+		Working: "",
 		inEditMode: false,
 	};
 
-	async componentDidMount() {
+	componentDidMount() {
+        //  hard coded id due to bad implementation.
+        fetch(`http://localhost:3000/account/${this.state.Role === 'admin' ? 2 : 1}`, {
+            method: "GET"
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if ((data.status === "200" )) {
+                console.log(data.user)
+                const user = data.user
+                this.setState({
+                    ...this.state,
+                    Address1: user.address_1,
+                    Address2: user.address_2,
+                    City: user.city,
+                    Email: user.email,
+                    Home: user.home,
+                    Mobile: user.mobile,
+                    Name: user.name,
+                    Postcode: user.postcode,
+                    State: user.state,
+                    Working: user.work
+                })
+            }
+        })
+
+        // address_1: "570 Lygon St"
+        // address_2: null
+        // city: "Melbourne"
+        // email: "fdmd2011@gmail.com"
+        // home: "0882629917"
+        // id: 1
+        // mobile: "0481233205"
+        // name: "Midas"
+        // password: "123456"
+        // postcode: 3053
+        // role: "customer"
+        // state: "Victoria"
+        // work: "0123456789"
+
 		// fetch user data here
 		// try {
 		// 	/* fetch wine list with parameter wineID and save it to state as wine_list*/
@@ -45,13 +85,37 @@ class Account extends Component {
 
 	handleProfileButton = () => {
 		// event.preventDefault();
-		this.setState({ inEditMode: true });
+		this.setState({ inEditMode: true }, _ => console.log(this.state));
 	};
 
 	handleDetailSubmit = (event) => {
 		event.preventDefault();
-		console.log("state: ", this.state);
-		this.setState({ inEditMode: false });
+        console.log("state: ", this.state);
+        fetch(`http://localhost:3000/account/${this.state.Role === 'admin' ? 2 : 1}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: this.state.Name,
+                address_1: this.state.Address1,
+                address_2: this.state.Address2,
+                city: this.state.City,
+                state: this.state.State,
+                postcode: this.state.Postcode,
+                mobile: this.state.Mobile,
+                home: this.state.Home,
+                work: this.state.Working,
+                email: this.state.Email
+            })
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if ((data.status === "200" )) {
+                this.setState({ inEditMode: false });
+            }
+        })
+		
 		// using POST API to transfer the data to DB
 	};
 
@@ -78,7 +142,7 @@ class Account extends Component {
 			<div>
 				<SideBar
 					SideBar={this.SideBar}
-					Username={this.props.Username}
+					Name={this.state.Name}
 					Role={this.props.Role}
 				/>
 				<div className="content">

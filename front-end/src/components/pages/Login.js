@@ -19,7 +19,8 @@ class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: "",
+            username: "",
+            userId: "",
 			password: "",
 			role: "Admin",
 			modalShow: false,
@@ -47,16 +48,16 @@ class Login extends Component {
 			},
 			body: JSON.stringify({
 				username: this.state.username,
-				password: this.state.password,
+                password: this.state.password
 			}),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				if ((data.status = "200")) {
-					this.props.history.push("/dashboard");
+				if ((data.status === "200")) {
 					this.props.updateUsername(this.state.username);
-					this.props.updatePassword(this.state.password);
-					this.props.updateRole(this.state.role);
+					// this.props.updatePassword(this.state.password);
+                    this.props.updateRole(this.state.role);
+                    this.props.history.push("/dashboard");
 				}
 				// this.state.username === "asdf" && this.state.password === "zxcv") {
 
