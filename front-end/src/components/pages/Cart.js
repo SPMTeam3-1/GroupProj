@@ -80,6 +80,8 @@ class Carts extends Component {
 	submitCheckOut = (event) => {
 		event.preventDefault();
 		try {
+			const now = new Date();
+			var oneWeek = new Date(now.getTime() + 60 * 60 * 24 * 7 * 1000);
 			// post the state information through API to DB
 			const year = this.state.DeliveryDate.split("-")[0];
 			const month = this.state.DeliveryDate.split("-")[1];
@@ -92,9 +94,14 @@ class Carts extends Component {
 			deliveryTime.setHours(parseInt(time));
 			deliveryTime.setMinutes(0);
 			deliveryTime.setSeconds(0);
+			if (deliveryTime > oneWeek) throw "The date must be within 7 days";
+			if (deliveryTime < now)
+				throw "You must choose a time that is not now";
 			this.setState({ checkOutOnHide: true });
 			this.setSuccAlert(true);
 		} catch (error) {
+			console.log(error);
+			this.setState({ checkOutOnHide: true });
 			this.setFailAlert(true, error);
 		}
 	};
