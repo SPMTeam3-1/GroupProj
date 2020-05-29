@@ -81,7 +81,17 @@ class Carts extends Component {
 		event.preventDefault();
 		try {
 			// post the state information through API to DB
-
+			const year = this.state.DeliveryDate.split("-")[0];
+			const month = this.state.DeliveryDate.split("-")[1];
+			const date = this.state.DeliveryDate.split("-")[2];
+			const time = this.state.TimeInterval;
+			var deliveryTime = new Date();
+			deliveryTime.setFullYear(parseInt(year));
+			deliveryTime.setMonth(parseInt(month) - 1);
+			deliveryTime.setDate(parseInt(date));
+			deliveryTime.setHours(parseInt(time));
+			deliveryTime.setMinutes(0);
+			deliveryTime.setSeconds(0);
 			this.setState({ checkOutOnHide: true });
 			this.setSuccAlert(true);
 		} catch (error) {
@@ -318,13 +328,13 @@ class Carts extends Component {
 													// onSelect={this.handleSelectState}
 												>
 													<option value=""></option>
-													<option value="4pm">
+													<option value="16">
 														4pm-5pm
 													</option>
-													<option value="5pm">
+													<option value="17">
 														5pm-6pm
 													</option>
-													<option value="6pm">
+													<option value="18">
 														6pm-7pm
 													</option>
 												</Form.Control>

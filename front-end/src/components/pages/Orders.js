@@ -61,8 +61,8 @@ class Orders extends Component {
 									<thead>
 										<tr>
 											<th>Order ID</th>
-											<th>From</th>
-											<th>Bill To</th>
+											<th>Customer Name</th>
+											<th>Produce Boxes</th>
 											<th>Status</th>
 											<th>Total Cost</th>
 											<th>Actions</th>

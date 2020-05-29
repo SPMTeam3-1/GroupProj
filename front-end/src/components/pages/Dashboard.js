@@ -39,6 +39,7 @@ class Dashboard extends Component {
 		if (!this.state.value) {
 			this.setState({ failAlert: true });
 		} else {
+			console.log("clicked");
 			var CurrCart = this.state.Carts;
 			CurrCart.push(this.state.value);
 			this.setState({ value: "", Carts: CurrCart, succAlert: true });
@@ -56,11 +57,6 @@ class Dashboard extends Component {
 
 	handleChange(event) {
 		this.setState({ value: event.target.value });
-	}
-
-	handleSubmit(event) {
-		//alert('You have selected' + ' ' + this.state.value + ' ' + 'box');
-		event.preventDefault();
 	}
 
 	render() {
