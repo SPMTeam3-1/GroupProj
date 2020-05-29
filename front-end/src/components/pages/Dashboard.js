@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import {
+	BrowserRouter as Router,
+	Route,
+	Redirect,
+	withRouter,
+} from "react-router-dom";
 import PropTypes from "prop-types";
 import SideBar from "./SideBar";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Alert from "react-bootstrap/Alert";
 
 import "../../styles/Dashboard.scss";
 import imgURL1 from "../../pic/fruit.jpg";
@@ -11,20 +18,50 @@ import imgURL3 from "../../pic/mix.jpg";
 class Dashboard extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {value: ' S '};
+		this.state = {
+			Carts: [],
+			value: "",
+			succAlert: false,
+			failAlert: false,
+		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(event) {
-		this.setState({value: event.target.value});
-	  }
-	
-	  
+		event.preventDefault();
+		this.setState({ value: event.target.value });
+	}
+
 	handleSubmit(event) {
 		//alert('You have selected' + ' ' + this.state.value + ' ' + 'box');
 		event.preventDefault();
-	  }
+		if (!this.state.value) {
+			this.setState({ failAlert: true });
+		} else {
+			var CurrCart = this.state.Carts;
+			CurrCart.push(this.state.value);
+			this.setState({ value: "", Carts: CurrCart, succAlert: true });
+			// this.props.updateCarts(CurrCart);
+		}
+	}
+
+	setSuccAlert(boolean) {
+		this.setState({ succAlert: boolean });
+	}
+
+	setFailAlert(boolean) {
+		this.setState({ failAlert: boolean });
+	}
+
+	handleChange(event) {
+		this.setState({ value: event.target.value });
+	}
+
+	handleSubmit(event) {
+		//alert('You have selected' + ' ' + this.state.value + ' ' + 'box');
+		event.preventDefault();
+	}
 
 	render() {
 		console.log("from dashboard: ", this.props);
@@ -42,13 +79,35 @@ class Dashboard extends Component {
 					SideBar={this.SideBar}
 					Username={this.props.Username}
 					Role={this.props.Role}
+					Carts={this.state.Carts}
 				/>
 				<div className="content">
+					<Alert
+						variant="success"
+						show={this.state.succAlert}
+						onClose={() => this.setSuccAlert(false)}
+						dismissible
+					>
+						<Alert.Heading>All Set!</Alert.Heading>
+						<p>You have successfully add the box into the cart!</p>
+					</Alert>
+					<Alert
+						variant="danger"
+						show={this.state.failAlert}
+						onClose={() => this.setFailAlert(false)}
+						dismissible
+					>
+						<Alert.Heading>
+							Oh snap! You have to choose a valid size!
+						</Alert.Heading>
+						<p>{this.state.errorMsg}</p>
+					</Alert>
 					<Card className="card-sm-1">
 						<Card.Img
 							border="dark"
 							variant="top"
-							width="100px" height="200px"
+							width="100px"
+							height="200px"
 							src={imgURL1}
 						/>
 						<Card.Body style={{ textAlign: "right" }}>
@@ -58,25 +117,40 @@ class Dashboard extends Component {
 								Medium-which is suitable for a family of 4
 								Large-which is suitable for a family of 6
 							</Card.Text>
-							
+
 							<form onSubmit={this.handleSubmit}>
 								<label>
-								Choose your size of box
-								<select value={this.state.value} onChange={this.handleChange}>
-									<option value="S1">Small</option>
-									<option value="M1">Medium</option>
-									<option value="L1">Large</option>
-								</select>
+									Choose your size of box
+									<select
+										value={this.state.value}
+										onChange={this.handleChange}
+									>
+										<option value=""></option>
+										<option value="S-Fruit-$20">
+											Small-$20
+										</option>
+										<option value="M-Fruit-$40">
+											Medium-$40
+										</option>
+										<option value="L-Fruit-$60">
+											Large-$60
+										</option>
+									</select>
 								</label>
-								
-								<Button type="submit" variant="primary" >Select</Button>
+
+								<Button type="submit" variant="primary">
+									Select
+								</Button>
 							</form>
-							
-							
 						</Card.Body>
 					</Card>
 					<Card className="card-sm-1">
-						<Card.Img variant="top" width="100px" height="200px" src={imgURL2} />
+						<Card.Img
+							variant="top"
+							width="100px"
+							height="200px"
+							src={imgURL2}
+						/>
 						<Card.Body style={{ textAlign: "right" }}>
 							<Card.Title>Vegetable Box</Card.Title>
 							<Card.Text>
@@ -86,20 +160,37 @@ class Dashboard extends Component {
 							</Card.Text>
 							<form onSubmit={this.handleSubmit}>
 								<label>
-								Choose your size of box
-								<select value={this.state.value} onChange={this.handleChange}>
-									<option value="S">Small</option>
-									<option value="M">Medium</option>
-									<option value="L">Large</option>
-								</select>
+									Choose your size of box
+									<select
+										value={this.state.value}
+										onChange={this.handleChange}
+									>
+										<option value=""></option>
+										<option value="S-Veg-$15">
+											Small-$15
+										</option>
+										<option value="M-Veg-$30">
+											Medium-$30
+										</option>
+										<option value="L-Veg-$45">
+											Large-$45
+										</option>
+									</select>
 								</label>
-								
-								<Button type="submit" variant="primary" >Select</Button>
+
+								<Button type="submit" variant="primary">
+									Select
+								</Button>
 							</form>
 						</Card.Body>
 					</Card>
 					<Card className="card-sm-1">
-						<Card.Img variant="top" width="100px" height="200px" src={imgURL3} />
+						<Card.Img
+							variant="top"
+							width="100px"
+							height="200px"
+							src={imgURL3}
+						/>
 						<Card.Body style={{ textAlign: "right" }}>
 							<Card.Title>Mixed Box</Card.Title>
 							<Card.Text>
@@ -109,18 +200,31 @@ class Dashboard extends Component {
 							</Card.Text>
 							<form onSubmit={this.handleSubmit}>
 								<label>
-								Choose your size of box
-								<select value={this.state.value} onChange={this.handleChange}>
-									<option value="S2">Small</option>
-									<option value="M2">Medium</option>
-									<option value="L2">Large</option>
-								</select>
+									Choose your size of box
+									<select
+										value={this.state.value}
+										onChange={this.handleChange}
+									>
+										<option value=""></option>
+										<option value="S-Mixed-$18">
+											Small-$18
+										</option>
+										<option value="M-Mixed-$36">
+											Medium-$36
+										</option>
+										<option value="L-Mixed-$54">
+											Large-$54
+										</option>
+									</select>
 								</label>
-								
-								<Button type="submit" variant="primary" >Select</Button>
+
+								<Button type="submit" variant="primary">
+									Select
+								</Button>
 							</form>
 						</Card.Body>
-					</Card>{" "}
+					</Card>
+					{/* </Card>{" "}
 					<Card
 						className="card-md"
 						style={{ width: "80%", height: "30em" }}
@@ -184,7 +288,7 @@ class Dashboard extends Component {
 							</Card.Text>
 							<Button variant="primary">Go somewhere</Button>
 						</Card.Body>
-					</Card>
+					</Card> */}
 				</div>
 			</div>
 		);
@@ -198,4 +302,4 @@ class Dashboard extends Component {
 // 	delTodo: PropTypes.func.isRequired
 // };
 
-export default Dashboard;
+export default withRouter(Dashboard);

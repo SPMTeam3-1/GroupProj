@@ -48,6 +48,8 @@ export default withRouter(
 				Role: this.props.Role
 					? this.props.Role
 					: this.props.location.Props.Role,
+				Carts: this.props.Carts ? this.props.Carts : [],
+				// : this.props.location.Props.Carts,
 			};
 		}
 
@@ -71,10 +73,11 @@ export default withRouter(
 		};
 
 		handleRedirect = (pageLink) => {
-			console.log("redirecting to corresponding page");
+			console.log("redirecting to corresponding page：", this.state);
 			this.props.history.push({
 				pathname: pageLink,
 				Props: { ...this.state },
+				Carts: this.state.Carts,
 			});
 		};
 
@@ -132,6 +135,8 @@ export default withRouter(
 		};
 
 		render() {
+			console.log("props:", this.props);
+			this.state = this.props;
 			console.log("from sidebar state", this.state);
 			return (
 				<div className="NavBar">
@@ -305,6 +310,19 @@ export default withRouter(
 						>
 							<MdReceipt type="bar" /> Orders
 						</p>
+						{this.state.Role === "Customer" ? (
+							<p
+								id="dashboard"
+								className="menu-item"
+								onClick={(e) =>
+									this.handleItemClick(e, "/cart")
+								}
+							>
+								<MdShoppingCart type="dashboard" /> Cart
+							</p>
+						) : (
+							""
+						)}
 
 						{/* <p
 							id="food_pairing"

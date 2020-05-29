@@ -15,9 +15,12 @@ import Tabs from "react-bootstrap/Tabs";
 import "../../styles/AllRoles.scss";
 
 class Orders extends Component {
-	state = {
-		searchKeyWord: "",
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			searchKeyWord: "",
+		};
+	}
 
 	onChange = (value) => {
 		this.setState({ searchKeyWord: value });
@@ -31,6 +34,7 @@ class Orders extends Component {
 					SideBar={this.SideBar}
 					Username={this.props.Username}
 					Role={this.props.Role}
+					Carts={this.props.Carts}
 				/>
 				<div className="content">
 					<div className="header">
