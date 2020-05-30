@@ -31,6 +31,7 @@ class Account extends Component {
 	};
 
 	componentDidMount() {
+        console.log(this.state)
         //  hard coded id due to bad implementation.
         fetch(`http://localhost:3000/account/${this.state.Role === 'admin' ? 2 : 1}`, {
             method: "GET"

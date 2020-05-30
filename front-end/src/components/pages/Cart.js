@@ -98,7 +98,52 @@ class Carts extends Component {
 			if (deliveryTime < now)
 				throw "You must choose a time that is not now";
 			this.setState({ checkOutOnHide: true });
-			this.setSuccAlert(true);
+            this.setSuccAlert(true);
+            // ["S-Fruit-$20"]
+            // console.log(this.state.carts)
+            // console.log(this.state.carts[0])
+            const cartInfo = this.props.location.Carts[0].split('-')
+            // clean the data before submisson, split the order string according to size, status, delivery_time, and username
+            
+            console.log(this.props.location.Props)
+
+            // specific box type
+            let size
+            if (cartInfo[0] === 'S') {
+                size = 'small';
+            } else if (cartInfo[0] === 'M') {
+                size = 'medium';
+            } else {
+                size = 'large';
+            }
+            // console.log('cartInfo', cartInfo)
+            const type = cartInfo[1].toLowerCase()
+            // console.log(type)
+            const price = cartInfo[2]
+            // console.log(price)
+            const data = {
+                size,
+                type,
+                price,
+                status: 'pending',
+                userId: this.props.location.Props.username,
+                deliveryTime: deliveryTime
+            
+            }
+    
+            fetch('http://localhost:3000/orders/', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({data})
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if ((data.status === "200")) {
+                    console.log('order saved successfully')
+                }
+            })
 		} catch (error) {
 			console.log(error);
 			this.setState({ checkOutOnHide: true });
