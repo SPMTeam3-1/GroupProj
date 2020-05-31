@@ -87,16 +87,17 @@ class Carts extends Component {
 			const month = this.state.DeliveryDate.split("-")[1];
 			const date = this.state.DeliveryDate.split("-")[2];
 			const time = this.state.TimeInterval;
-			var deliveryTime = new Date();
-			deliveryTime.setFullYear(parseInt(year));
-			deliveryTime.setMonth(parseInt(month) - 1);
-			deliveryTime.setDate(parseInt(date));
+			var deliveryTime = new Date(
+				parseInt(year),
+				parseInt(month) - 1,
+				parseInt(date)
+			);
 			deliveryTime.setHours(parseInt(time));
 			deliveryTime.setMinutes(0);
 			deliveryTime.setSeconds(0);
 			if (deliveryTime > oneWeek) throw "The date must be within 7 days";
 			if (deliveryTime < now)
-				throw "You must choose a time that is not now";
+				throw "You must choose a time that is within 7 days from NOW";
 			this.setState({ checkOutOnHide: true });
             this.setSuccAlert(true);
             // ["S-Fruit-$20"]
