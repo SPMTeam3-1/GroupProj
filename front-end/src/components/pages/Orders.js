@@ -22,6 +22,10 @@ class Orders extends Component {
 		};
 	}
 
+	async componentDidMount() {
+		// push user and role to fetch order data accordingly.
+	}
+
 	onChange = (value) => {
 		this.setState({ searchKeyWord: value });
 	};
@@ -77,10 +81,7 @@ class Orders extends Component {
 											<td>AU$ 30</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -92,10 +93,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -107,10 +105,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -122,10 +117,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -137,10 +129,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -152,10 +141,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -167,10 +153,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -182,10 +165,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -197,10 +177,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -212,10 +189,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -227,10 +201,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
@@ -242,10 +213,7 @@ class Orders extends Component {
 											<td>1.1.1</td>
 											<td>
 												<Button variant="info">
-													<p>View</p>
-												</Button>
-												<Button variant="info">
-													<p>More</p>
+													<p>Delete</p>
 												</Button>
 											</td>
 										</tr>
