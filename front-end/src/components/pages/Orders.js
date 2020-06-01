@@ -128,7 +128,7 @@ class Orders extends Component {
                                                     return (
                                                         <tr key={i}>
                                                             <td>{order.no}</td>
-                                                            <td>{this.props.location.Props.Username}</td>
+                                                            <td>{order.user_id}</td>
                                                             <td>{order.type} - {order.size}</td>
                                                             <td>{order.status}</td>
                                                             <td>{order.price}</td>
