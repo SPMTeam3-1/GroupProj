@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from 'moment';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -108,6 +109,7 @@ class Carts extends Component {
             
             console.log(this.props.location.Props)
 
+            console.log(moment(deliveryTime).format('YYYY-MM-DD HH:mm:ss'));
             // specific box type
             let size
             if (cartInfo[0] === 'S') {
@@ -127,8 +129,8 @@ class Carts extends Component {
                 type,
                 price,
                 status: 'pending',
-                userId: this.props.location.Props.username,
-                deliveryTime: deliveryTime
+                userId: this.props.location.Props.Username,
+                deliveryTime: moment(deliveryTime).format('YYYY-MM-DD HH:mm:ss')
             
             }
     
@@ -137,7 +139,7 @@ class Carts extends Component {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({data})
+                body: JSON.stringify({...data})
             })
             .then((response) => response.json())
             .then((data) => {

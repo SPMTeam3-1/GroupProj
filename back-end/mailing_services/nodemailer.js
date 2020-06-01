@@ -5,6 +5,8 @@ const nodemailer = require("nodemailer");
 // async..await is not allowed in global scope, must use a wrapper
 const sendingMail = async (actionType, userInfo, orderInfo) => {
 
+    console.log(actionType, userInfo, orderInfo)
+
     const confirmationEmail = {
         from: '"JJFresh Shop" <JJFreshCustomerCentre@gmail.com>',
         to: userInfo.email,
@@ -21,7 +23,7 @@ const sendingMail = async (actionType, userInfo, orderInfo) => {
         subject: "(no-reply)Order Cancellation: We are sorry to see you go.",
         html: `<h1>Dear customer,</h1>
                 <p>Your order for ${orderInfo.type} (${orderInfo.size}) has been cancelled,</p>
-                <p>we look foward to doing business with you in the future!</p>
+                <p>we look forward to doing business with you in the future!</p>
                 <p>Best regards,<br/>JJFresh Shop Team</p>`
     }
 
@@ -29,6 +31,7 @@ const sendingMail = async (actionType, userInfo, orderInfo) => {
     let transporter = nodemailer.createTransport({
         service: "Gmail",
         requireTLS: true,
+        pool: true, // prevent 'too many login attempts' error
         auth: {
             user: process.env.JJFRESH_USERNAME, // generated ethereal user
             pass: process.env.JJFRESH_PASSWORD // generated ethereal password
